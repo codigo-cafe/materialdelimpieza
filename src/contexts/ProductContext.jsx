@@ -264,7 +264,7 @@ const ProductProvider = ({ children }) => {
 
       //CATEGORÍA DESINFECTANTES
       {
-        id: 26,
+        id: 31,
         title: 'Archer Desinfectante Concentrado Germikill X 200G',
         price: 34.60,
         description: 'Disponibilidad: 6 en stock, listo para ser enviado - Unidad de venta: Frasco',
@@ -272,7 +272,7 @@ const ProductProvider = ({ children }) => {
         image: 'https://amarket.com.bo/cdn/shop/files/07775005002054_670x670.jpg?v=1712343894',
       },
       {
-        id: 27,
+        id: 32,
         title: 'Mr. Cloro Lavandina X 1 L',
         price: 11.50,
         description: 'Disponibilidad: 7 en stock, listo para ser enviado - Unidad de venta: Unidad',
@@ -280,7 +280,7 @@ const ProductProvider = ({ children }) => {
         image: 'https://amarket.com.bo/cdn/shop/files/7779970700038_670x670.jpg?v=1712344277',
       },
       {
-        id: 28,
+        id: 33,
         title: 'Mr. Cloro Lavandina X 2 L',
         price: 23.00,
         description: 'Disponibilidad: 18 en stock, listo para ser enviado - Unidad de venta: Unidad',
@@ -288,7 +288,7 @@ const ProductProvider = ({ children }) => {
         image: 'https://amarket.com.bo/cdn/shop/files/7779970700052_670x670.jpg?v=1712344290',
       },
       {
-        id: 29,
+        id: 34,
         title: 'Lavandina Sapolio X 1000Ml',
         price: 12.80,
         description: 'Disponibilidad: ¡Solo 5 disponibles! - Unidad de venta: Unidad',
@@ -296,7 +296,7 @@ const ProductProvider = ({ children }) => {
         image: 'https://amarket.com.bo/cdn/shop/files/7750243073295_670x670.jpg?v=1716846086',
       },
       {
-        id: 30,
+        id: 35,
         title: 'Lysoform Desinfectante Original X 360Cc',
         price: 38.40,
         description: 'Disponibilidad: ¡Solo 5 disponibles! - Unidad de venta: Unidad',
@@ -306,7 +306,7 @@ const ProductProvider = ({ children }) => {
 
       //CATEGORÍA BOLSAS
       {
-        id: 31,
+        id: 36,
         title: 'Ola Bolsas De Basura Negra Hasta 50 L 70X75cm X 10 Unidades',
         price: 13.50,
         description: 'Disponibilidad: ¡Solo 2 disponibles! - Unidad de venta: Paquete',
@@ -314,7 +314,7 @@ const ProductProvider = ({ children }) => {
         image: 'https://amarket.com.bo/cdn/shop/files/7775000011648_670x670.jpg?v=1712344932',
       },
       {
-        id: 32,
+        id: 37,
         title: 'Ola Bolsas Basureras X 10 Unidades 56X50cm X 25 L',
         price: 8.30,
         description: 'Disponibilidad: 7 en stock, listo para ser enviado - Unidad de venta: Paquete',
@@ -322,7 +322,7 @@ const ProductProvider = ({ children }) => {
         image: 'https://amarket.com.bo/cdn/shop/files/7775000011624_670x670.jpg?v=1712344356',
       },
       {
-        id: 33,
+        id: 38,
         title: 'Ola Bolsas Basureras 60X63cm X 35 L',
         price: 10.30,
         description: 'Disponibilidad: 10 en stock, listo para ser enviado - Unidad de venta: Paquete',
