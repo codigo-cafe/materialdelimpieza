@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 // import link
 import { Link } from "react-router-dom";
 // import logo
-import Logo from "../assets/img/logo.webp";
+import Logo from "../assets/img/Logo.webp";
 
 import { motion, AnimatePresence } from "motion/react";
 
