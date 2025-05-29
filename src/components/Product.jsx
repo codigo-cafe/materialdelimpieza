@@ -12,7 +12,7 @@ const Product = ({ product }) => {
   const [isLoading, setIsLoading] = useState(true);
   const { cart, addToCart, decreaseAmount } = useContext(CartContext);
   // destructure product
-  const { id, image, category, title, price } = product;
+  const { id, title, price, category, image } = product;
 
   const cartItem = cart.find((item) => {
     return item.id === id;
@@ -35,7 +35,7 @@ const Product = ({ product }) => {
               {isLoading && (
                 <div className="max-h-[160px] absolute inset-0 bg-gray-300 animate-pulse" />
               )}
-              <Link to={`/product/${id}`}>
+              <Link to={`/producto/${id}`}>
                 <img
                   src={image}
                   alt={title}
@@ -56,7 +56,7 @@ const Product = ({ product }) => {
           <div className="text-sm capitalize text-gray-500 mb-1">
             {category}
           </div>
-          <Link to={`/product/${id}`}>
+          <Link to={`/producto/${id}`}>
             <h2
               className={`${
                 cartItem ? "mr-10 sm:mr-0" : ""

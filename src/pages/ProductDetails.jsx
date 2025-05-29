@@ -11,11 +11,13 @@ import { motion, AnimatePresence } from "motion/react";
 // import components
 import Navbar from "../components/Navbar";
 
+import { HiPlus, HiMinus, HiOutlineChevronLeft } from "react-icons/hi";
+
 const ProductDetails = () => {
   // get the product id from the url
   const { id } = useParams();
   const { products } = useContext(ProductContext);
-  const { addToCart } = useContext(CartContext);
+  const { cart, addToCart, decreaseAmount } = useContext(CartContext);
 
   const navigate = useNavigate();
 
@@ -36,65 +38,112 @@ const ProductDetails = () => {
         }}
         className="h-screen flex justify-center items-center"
       >
-        Loading...
+        Cargando...
       </motion.section>
     );
   }
 
+  console.log(cart);
+
+  const cartItem = cart.find((item) => {
+    return item.id === parseInt(id);
+  });
+
   // destructure product
-  const { title, price, description, image } = product;
+  const { title, price, description, category, image } = product;
 
   return (
     <>
       <AnimatePresence>
         <motion.section
-        key={id}
+          key={id}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
             duration: 0.4,
             scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
           }}
-          className="pt-32 pb-12 lg:py-32 h-auto flex items-center"
+          className="pt-22 pb-5 lg:pt-26 lg:pb-10 h-auto flex items-center"
         >
           <div className="container mx-auto">
-            {/* image & text wrapper */}
-            <div className="flex flex-col lg:flex-row items-center">
-              {/* image */}
-              <div className="flex flex-1 justify-center items-center mb-8 lg:mb-0">
-                <img
-                  src={image}
-                  alt={title}
-                  className="max-w-[200px] lg:max-w-sm"
-                />
-              </div>
-              {/* text */}
-              <div className="flex-1 text-center lg:text-left">
-                <h1 className="text-[26px] font-medium mb-2 max-w-[450px] mx-auto lg:mx-0">
-                  {title}
-                </h1>
-                {/* price */}
-                <div className="text-xl text-blue-500 font-medium mb-6">
-                  {`Bs. ${parseFloat(price).toFixed(2)}`}
+            <article className="rounded-lg bg-white shadow-lg">
+              <div className="flex flex-col md:flex-row">
+                <div className="flex items-center justify-center p-6 md:w-1/2 lg:p-14 xl:p-16">
+                  <img src={image} alt={title} className="lg:max-w-sm" />
                 </div>
-                {/* description */}
-                <p className="mb-8">{description}</p>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => addToCart(product, product.id)}
-                    className="cursor-pointer bg-blue-500 hover:bg-blue-600 text-white py-4 px-8 rounded transition duration-300"
-                  >
-                    Añadir al Carrito
-                  </button>
-                  <button
-                    onClick={() => navigate(-1)}
-                    className="cursor-pointer bg-gray-200 hover:bg-gray-300 py-4 px-8 rounded transition duration-300"
-                  >
-                    Volver
-                  </button>
+                <div className="flex flex-col items-start p-5 pt-10 md:w-1/2 lg:p-14 xl:p-16">
+                  <div className="w-full">
+                    <div className="flex w-full items-start justify-between space-x-8 rtl:space-x-reverse">
+                      <h1 className="text-lg font-semibold tracking-tight text-heading md:text-xl xl:text-2xl cursor-pointer transition-colors hover:text-accent">
+                        {title}
+                      </h1>
+                    </div>
+                    <div className="mt-3 text-sm leading-7 text-body md:mt-4 react-editor-description">
+                      <div>{description}</div>
+                    </div>
+                    <span className="my-5 flex items-center md:my-10">
+                      <ins className="text-2xl font-semibold text-blue-500 no-underline md:text-3xl">
+                        {`Bs. ${parseFloat(price).toFixed(2)}`}
+                      </ins>
+                    </span>
+                    <div className="mt-6 flex flex-col items-center md:mt-6 lg:flex-row gap-2">
+                      <div className="w-full lg:mb-0 lg:max-w-[400px] h-full md:h-14">
+                        {/* buttons */}
+                        {cartItem ? (
+                          <div className="overflow-hidden w-full h-14 rounded text-white bg-blue-500 inline-flex justify-between">
+                            <button
+                              onClick={() => decreaseAmount(parseInt(id))}
+                              className="cursor-pointer p-2 transition-colors duration-200 hover:bg-blue-600 focus:outline-0 px-5"
+                            >
+                              <span className="sr-only">Reducir</span>
+                              <HiMinus className="text-white w-3 h-3" />
+                            </button>
+                            <div className="flex flex-1 items-center justify-center px-3 text-sm font-semibold">
+                              {cartItem.amount}
+                            </div>
+                            <button
+                              onClick={() => addToCart(product, parseInt(id))}
+                              className="cursor-pointer p-2 transition-colors duration-200 hover:bg-blue-600 focus:outline-0 px-5"
+                              title=""
+                            >
+                              <span className="sr-only">Aumentar</span>
+                              <HiPlus className="text-white w-3 h-3" />
+                            </button>
+                          </div>
+                        ) : (
+                          <div>
+                            <button
+                              onClick={() => addToCart(product, product.id)}
+                              className="cursor-pointer flex w-full items-center justify-center rounded bg-blue-500 py-4 px-5 text-sm font-light text-white transition-colors duration-300 hover:bg-blue-600 focus:bg-blue-600 focus:outline-0 lg:text-base"
+                            >
+                              <span>Añadir al Carrito</span>
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => navigate(-1)}
+                        className="cursor-pointer flex w-full items-center justify-center rounded border border-gray-200 bg-transparent py-4 px-5 text-sm font-light text-heading transition-colors duration-300 hover:border-blue-500 hover:text-blue-500 focus:border-blue-600 focus:text-blue-600 focus:outline-0 lg:text-base"
+                      >
+                        <HiOutlineChevronLeft className="pr-1 w-4 h-4"/>
+                        <span>Volver</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 flex w-full flex-row items-start pt-4 md:mt-6 md:pt-6">
+                    <span className="py-1 text-sm font-semibold capitalize text-heading ltr:mr-6 rtl:ml-6">
+                      Categoría
+                    </span>
+                    <div className="flex flex-row flex-wrap">
+                      <button className="mb-2 whitespace-nowrap rounded border border-gray-200 bg-transparent py-1 px-2.5 text-sm tracking-wider text-heading transition-colors focus:outline-0 ltr:mr-2 rtl:ml-2">
+                        {category}
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
         </motion.section>
 

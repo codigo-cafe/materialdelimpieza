@@ -31,13 +31,13 @@ const CartItem = ({ item }) => {
           </div>
         </div>
         <div className="relative mx-4 flex h-full w-10 shrink-0 items-center justify-center overflow-hidden bg-gray-100 sm:w-12">
-          <Link to={`/product/${id}`}>
+          <Link to={`/producto/${id}`}>
             <img loading="lazy" className='object-contain' src={image} alt={title} />
           </Link>
         </div>
         <div>
           <Link
-            to={`/product/${id}`}
+            to={`/producto/${id}`}
           >
             <h3 className="font-bold text-heading text-[.875rem] text-gray-800">{title}</h3>
           </Link>
